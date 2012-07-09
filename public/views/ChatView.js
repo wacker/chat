@@ -47,7 +47,6 @@ define([
 				var input = this.$('input');
 				socket.send(input.val());
 				input.val(null);
-				this.options.router.navigate('', { trigger: true });
 			}
 		},
 

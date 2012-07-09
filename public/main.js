@@ -45,7 +45,7 @@ require([
 		chat: function (name) {
 			if (name) {
 				socket.name(name);
-				this.switchView(new ChatView({ router: this }));				
+				this.switchView(new ChatView());				
 			} else {
 				this.navigate('', { trigger: true });
 			}

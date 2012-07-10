@@ -1,18 +1,19 @@
 define([
-	'text!views/LoginView.html',
+	'text!views/Login.html',
 	'socket'
 ], function (loginTemplate, socket) {
+
 	return Backbone.View.extend({
 
 		tagName: 'table',
 
+		events: {
+			'keypress #name': 'login'
+		},
+
 		render: function () {
 			this.$el.html(Mustache.render(loginTemplate, {}));
 			this.$('input').focus();
-		},
-
-		events: {
-			'keypress #name': 'login'
 		},
 
 		login: function (event) {
@@ -22,4 +23,5 @@ define([
 		}
 
 	});
+
 });

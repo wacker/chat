@@ -1,8 +1,9 @@
 define([
-	'text!views/TitleView.html',
+	'text!views/Title.html',
 	'model/me',
 	'socket'
 ], function (titleTemplate, me, socket) {
+
 	return Backbone.View.extend({
 
 		tagName: 'h1',
@@ -24,4 +25,5 @@ define([
 		}
 
 	});
+
 });

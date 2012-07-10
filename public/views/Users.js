@@ -1,7 +1,8 @@
 define([
-	'text!views/UsersView.html',
+	'text!views/Users.html',
 	'model/users'
 ], function (usersTemplate, users) {
+
 	return Backbone.View.extend({
 
 		tagName: 'ul',
@@ -22,4 +23,5 @@ define([
 		}
 
 	});
+
 });

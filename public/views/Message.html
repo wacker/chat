@@ -1,0 +1,6 @@
+{{#from}}
+<li class="message">[{{time}}] {{from}}: {{text}}</li>
+{{/from}}
+{{^from}}
+<li>{{#time}}[{{time}}] {{/time}}{{text}}</li>
+{{/from}}

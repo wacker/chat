@@ -25,16 +25,16 @@ define([], function () {
 		socket.trigger('welcome', name);
 	});
 
-	socketIO.on('message', function (message) {
-		socket.trigger('message', message);
+	socketIO.on('message', function (data) {
+		socket.trigger('message', data);
 	});
 
-	socketIO.on('connected', function (name) {
-		socket.trigger('connected', name);
+	socketIO.on('connected', function (data) {
+		socket.trigger('connected', data);
 	});
 
-	socketIO.on('disconnected', function (name) {
-		socket.trigger('disconnected', name);
+	socketIO.on('disconnected', function (data) {
+		socket.trigger('disconnected', data);
 	});
 
 	return socket;

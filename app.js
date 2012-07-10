@@ -9,7 +9,10 @@ io.sockets.on('connection', function (socket) {
     socket.get('name', function (err, oldname) {
       socket.set('name', name, function () {
         socket.emit('welcome', name);
-        socket.broadcast.emit('connected', name);
+        socket.broadcast.emit('connected', {
+          time: new Date().getTime(),
+          user: name
+        });
       });
     });
   });
@@ -22,13 +25,20 @@ io.sockets.on('connection', function (socket) {
 
   socket.on('message', function (message) {
     socket.get('name', function (err, name) {
-      io.sockets.emit('message', { from: name, text: message });
+      io.sockets.emit('message', {
+        time: new Date().getTime(),
+        from: name,
+        text: message
+      });
     });
   });
 
   socket.on('disconnect', function () {
     socket.get('name', function (err, name) {
-      io.sockets.emit('disconnected', name);
+      io.sockets.emit('disconnected', {
+        time: new Date().getTime(),
+        user: name
+      });
     });
   });
 

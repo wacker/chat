@@ -4,8 +4,8 @@ require.config({
 	}
 });
 require([
-	'views/LoginView',
-	'views/ChatView',
+	'views/Login',
+	'views/Chat',
 	'model/users',
 	'model/me',
 	'socket'
@@ -29,9 +29,14 @@ require([
 		this.remove();
 	};
 
-	var currentView;
-
 	new (Backbone.Router.extend({
+
+		initialize: function () {
+			$('a').live('click', function () {
+				this.navigate($(this).attr('href'), true);
+				return false;
+			});
+		},
 
 		routes: {
 			'': 'login',
@@ -52,12 +57,12 @@ require([
 		},
 
 		switchView: function (view) {
-			if (currentView) {
-				currentView.close();
+			if (this.currentView) {
+				this.currentView.close();
 			}
-			currentView = view;
-			$('body').append(currentView.el);
-			currentView.render();
+			this.currentView = view;
+			$('body').append(view.el);
+			view.render();
 		}
 
 	}))();

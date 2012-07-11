@@ -6,9 +6,11 @@ define([
 	'model/me',
 	'model/users',
 	'socket'
-], function (chatTemplate, TitleView, UsersView, MessagesView, me, users, socket) {
+], function (template, TitleView, UsersView, MessagesView, me, users, socket) {
 
 	return Backbone.View.extend({
+
+		template: Handlebars.compile(template),
 
 		initialize: function () {
 			socket.on('welcome', function (user) {
@@ -23,7 +25,7 @@ define([
 		render: function () {
 			this.renderSubview(new TitleView());
 			this.renderSubview(new MessagesView());
-			this.$el.append(Mustache.render(chatTemplate, {}));
+			this.$el.append(this.template({}));
 			this.renderSubview(new UsersView());
 			this.$('input').focus();
 		},

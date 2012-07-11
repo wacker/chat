@@ -1,6 +1,13 @@
-{{#from}}
-<li class="message">[{{time}}] {{from}}: {{text}}</li>
-{{/from}}
-{{^from}}
-<li>{{#time}}[{{time}}] {{/time}}{{text}}</li>
-{{/from}}
+<li{{#if from}} class="message"{{/if}}>
+
+	{{#if time}}
+		[{{time}}]
+	{{/if}}
+
+	{{#if from}}
+		{{from}}:
+	{{/if}}
+
+	{{text}}
+
+</li>

@@ -1,14 +1,15 @@
 define([
-	'socket',
+	'text!views/Message.html',
 	'model/Message',
 	'model/messages',
-	'text!views/Message.html'
-], function (socket, Message, messages, messageTemplate) {
+	'socket'
+], function (template, Message, messages, socket) {
 
 	return Backbone.View.extend({
 
 		tagName: 'ul',
 		className: 'messages',
+		template: Handlebars.compile(template),
 
 		initialize: function () {
 
@@ -56,7 +57,8 @@ define([
 				if (msg.time) {
 					msg.time = moment(msg.time).from(new Date());
 				}
-				self.$el.append(Mustache.render(messageTemplate, msg));
+				console.log(msg);
+				self.$el.append(self.template(msg));
 			});
 		},
 

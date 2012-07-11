@@ -6,13 +6,11 @@ var _ = require("underscore")
 io.sockets.on('connection', function (socket) {
 
   socket.on('name', function (name) {
-    socket.get('name', function (err, oldname) {
-      socket.set('name', name, function () {
-        socket.emit('welcome', name);
-        socket.broadcast.emit('connected', {
-          time: new Date().getTime(),
-          user: name
-        });
+    socket.set('name', name, function () {
+      socket.emit('welcome', name);
+      socket.broadcast.emit('connected', {
+        time: new Date().getTime(),
+        user: name
       });
     });
   });

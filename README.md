@@ -3,7 +3,7 @@ A simple web chat using WebSockets and [node.js](http://nodejs.org/).
 
 ### Dependencies
 
-    $ npm install socket.io express underscore
+    $ npm install
 
 
 ### Running

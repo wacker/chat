@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "express": "^2.5.11",
+    "socket.io": "^0.9.17",
+    "underscore": "^1.8.3"
+  }
+}
